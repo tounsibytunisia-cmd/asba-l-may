@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3ASBA - Color Explosion!</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Bungee', cursive;
+    background: linear-gradient(270deg, red, orange, yellow, green, cyan, blue, violet);
+    background-size: 1400% 1400%;
+    animation: rainbowBG 10s ease infinite;
+    overflow: hidden;
+}
+
+/* Animated rainbow background */
+@keyframes rainbowBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+h1 {
+    font-size: 12vw;
+    text-align: center;
+    letter-spacing: 20px;
+    color: white;
+    text-shadow: 
+        5px 5px 0px red,
+        -5px -5px 0px blue,
+        10px -10px 0px yellow,
+        -10px 10px 0px lime;
+    animation: wiggle 0.5s infinite alternate, rainbowText 3s linear infinite;
+}
+
+/* Wiggle animation */
+@keyframes wiggle {
+    from { transform: rotate(-3deg) scale(1); }
+    to { transform: rotate(3deg) scale(1.1); }
+}
+
+/* Flashing rainbow text */
+@keyframes rainbowText {
+    0% { color: red; }
+    20% { color: orange; }
+    40% { color: yellow; }
+    60% { color: green; }
+    80% { color: blue; }
+    100% { color: violet; }
+}
+
+/* Floating circles */
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: float 8s infinite ease-in-out alternate;
+}
+
+@keyframes float {
+    from { transform: translateY(0px) rotate(0deg); }
+    to { transform: translateY(-200px) rotate(360deg); }
+}
+</style>
+</head>
+<body>
+
+<h1>3ASBA LIK</h1>
+
+<script>
+// Create floating colorful circles
+for (let i = 0; i < 30; i++) {
+    let circle = document.createElement("div");
+    circle.classList.add("circle");
+
+    let size = Math.random() * 100 + 20;
+    circle.style.width = size + "px";
+    circle.style.height = size + "px";
+    circle.style.left = Math.random() * window.innerWidth + "px";
+    circle.style.top = Math.random() * window.innerHeight + "px";
+    circle.style.background = `hsl(${Math.random()*360}, 100%, 50%)`;
+    circle.style.animationDuration = (Math.random() * 5 + 3) + "s";
+
+    document.body.appendChild(circle);
+}
+</script>
+
+</body>
+</html>
